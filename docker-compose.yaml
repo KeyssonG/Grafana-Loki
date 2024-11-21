@@ -5,6 +5,16 @@ networks:
     driver: bridge
 
 services:
+  gerador-logs:
+    image: keyssong/gera-log
+    ports:
+    - 8081:5000
+    volumes:
+    - "./logs/gerador-log:/logs" 
+    networks:
+    - loki  
+
+
   loki:
     image: grafana/loki:2.7.5
     ports:
