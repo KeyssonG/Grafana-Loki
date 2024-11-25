@@ -1,23 +1,23 @@
 server:
-  http_listen_port: 8090
+  http_listen_port: 9080
   grpc_listen_port: 0
 
-  positions:
-    filename: /position/positions.yaml
+positions:
+  filename: /position/positions.yaml
 
-  clients:
-    - url: http://loki:3100/loki/api/v1/push  
+clients:
+  - url: http://loki:3100/loki/api/v1/push  
 
-  scrape_configs:
+scrape_configs:
   - job_name: system
     static_configs:
     - targets:
-      - localhost
+        - localhost
       labels:
         job: varlogs
         __path__: /logs/syslogs/*log  
     - targets:
-      - localhost
+        - localhost
       labels:
         job: gerador-log
         __path__: /logs/gerador-log/*log      
